@@ -1,0 +1,15 @@
+[tools]
+"ubi:simonmichael/hledger" = {version = "latest", extract_all = "true"}
+"ubi:apauley/hledger-flow" = {version = 'latest'}
+
+[tasks.clean]
+description = "Clean hledger-flow generated files"
+run = 'find import/ -type d -regex ".*\(2-preprocessed\|3-journal\)" -exec rm -r {} +'
+
+[tasks.import]
+description = "Import all data from scratch"
+depends = ["clean"]
+run = [
+  "hledger-flow import .",
+  "hledger -f all-years.journal incomestatement"
+]
