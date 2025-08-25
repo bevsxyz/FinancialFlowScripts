@@ -1,0 +1,49 @@
+#!/usr/bin/env python3
+import sys
+from pathlib import Path
+import pandas as pd
+import os
+import re
+
+def usage():
+    """Print usage instructions."""
+    print(f"Usage: {sys.argv[0]} <input_file.xlsx> <output_file.csv>")
+    sys.exit(1)
+
+def main():
+    # --- Parse arguments ---
+    if len(sys.argv) < 3:
+        usage()
+
+    input_path = Path(sys.argv[1])
+    output_path = Path(sys.argv[2])
+
+    # Load accounts lookup
+    accounts_file = str(input_path).split("1-in")[0] + "accounts.csv"
+    accounts = pd.read_csv(accounts_file)
+
+    # Define account matching function
+    def match_account(desc: str) -> str:
+        desc_lower = str(desc).lower() if pd.notna(desc) else ""
+        mask = accounts['key'].apply(lambda k: bool(re.search(k, desc_lower)))
+        if mask.any():
+            return accounts.loc[mask, 'account'].iloc[0]
+        return "expenses:unknown"
+
+    # Load input CSV
+    df = pd.read_csv(input_path)
+    df.columns = ("date", "description", "date1", "debit", "credit", "comment", "balance")
+    df.loc[:, 'description'] = df['description'].str.replace("\n", " ")
+
+    # Map descriptions to account names
+    df["account"] = df["description"].map(match_account)
+
+    # Print stats
+    unknown_count = df["account"].str.contains("unknown", case=False).sum()
+    print(f"Processed {len(df)} transactions with {unknown_count} unknown accounts")
+
+    # Save output CSV
+    df.to_csv(output_path, index=False)
+
+if __name__ == "__main__":
+    main()
