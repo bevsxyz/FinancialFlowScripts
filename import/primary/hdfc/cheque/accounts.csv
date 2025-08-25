@@ -1,0 +1,12 @@
+key,account
+zerodha,Assets:transfers:HDFCChequeZerodha
+indian clearing,Assets:transfers:HDFCChequeZerodha
+indianclearing,Assets:transfers:HDFCChequeZerodha
+interest,revenue:interest:savings
+croma,expenses:electronics:croma
+zomato,expenses:food:zomato
+audible,expenses:subscription:audible
+spotify,expenses:subscription:spotify
+(?=.*stanely)(?=.*hsbc),Assets:transfers:HDFCChequeHSBCCheque
+"(?=.*stanely)(?=.*sbin0012861)",Assets:transfers:HDFCChequeSBICheque
+compass india food,expenses:food:foodbook

@@ -1,0 +1,19 @@
+skip 1
+
+date-format %-d/%m/%y
+
+fields date, description,_, amount1-out, amount1-in, comment, balance1, account2
+
+currency ₹
+status *
+
+account1 Assets:Current:Bevan:HDFC:Cheque
+
+if|account2
+ASHA  THOMAS|Liabilities:family:asha
+AYANA JOSEPH|Liabilities:family:ayana
+KIRTI BHUSHAN GANGULY|Liabilities:friend:kirti
+princeganguly|Liabilities:friend:kirti
+ABHINAV KATHURIA|Liabilities:friend:abhinavK
+FROM MAKEMYTRIP|revenue:refund:makemytrip
+BEVAN STANELY|Assets:transfers
