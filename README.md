@@ -55,26 +55,17 @@ mise run balance
 ```
 
 Sample balance sheet output (as of 2024-04-06):
-
-Balance Sheet 2024-04-06
-
-┌──────────────────────────────────╥────────────┐
-│                                  ║ 2024-04-06 │
-╞══════════════════════════════════╬════════════╡
-│ Assets                           ║            │
-├──────────────────────────────────╫────────────┤
-│ Assets:Current:Bevan:HDFC:Cheque ║   ₹2441.46 │
-├──────────────────────────────────╫────────────┤
-│                                  ║   ₹2441.46 │
-╞══════════════════════════════════╬════════════╡
-│ Liabilities                      ║            │
-├──────────────────────────────────╫────────────┤
-├──────────────────────────────────╫────────────┤
-│                                  ║          0 │
-╞══════════════════════════════════╬════════════╡
-│ Net:                             ║   ₹2441.46 │
-└──────────────────────────────────╨────────────┘
-
+<link rel="stylesheet" href="hledger.css"><style>
+table {border-collapse:collapse}
+th, td {padding-left:1em}
+th.account, td.account {padding-left:0;}
+td:nth-child(1) {white-space:nowrap}
+tr:nth-child(odd) td {background-color:#eee}
+</style><table><tr><th colspan="2" style="text-align:left"><h2>Balance Sheet 2024-04-06</h2></th></tr><link rel="stylesheet" href="hledger.css"><style>
+table {border-collapse:collapse}
+th, td {padding-left:1em}
+th.account, td.account {padding-left:0;}
+</style><table><tr><th></th><th>2024-04-06</th></tr><tr><td colspan="2" class="account"><b>Assets</b></td></tr><tr><td class="account">Assets:Current:Bevan:HDFC:Cheque</td><td align="right" class="amount">₹2441.46</td></tr><tr><td style="border-top:double black" class="account"><b>Total:</b></td><td style="border-top:double black" align="right" class="amount coltotal"><b>₹2441.46</b></td></tr><tr><td colspan="2"> </td></tr><tr><td colspan="2" class="account"><b>Liabilities</b></td></tr><tr><td style="border-top:double black" class="account"><b>Total:</b></td><td style="border-top:double black" align="right" class="amount coltotal"><b>0</b></td></tr><tr><td colspan="2"> </td></tr><tr><td style="border-top:double black" class="account"><b>Net:</b></td><td style="border-top:double black" align="right" class="amount coltotal"><b>₹2441.46</b></td></tr></table></table>
 ## Project Structure
 
 - `import/` — Contains raw bank data and preprocessing scripts
