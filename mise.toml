@@ -13,3 +13,7 @@ run = [
   "hledger-flow import .",
   "hledger -f all-years.journal incomestatement"
 ]
+
+[tasks.balance]
+description = "Print Balance Sheet"
+run = "hledger -f all-years.journal balancesheet"
